@@ -51,7 +51,7 @@ export default function Home({ posts }) {
             </p>
           </div>
 
-          <p className="text-lg leading-7 text-gray dark:text-gray">{siteMetadata.description}</p>
+          <p className="text-gray dark:text-gray text-lg leading-7">{siteMetadata.description}</p>
         </div>
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
