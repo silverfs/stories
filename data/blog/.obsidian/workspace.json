@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "indonesia-the-journeys-beginning.mdx",
+                "file": "indonesia-abroad/indonesia-the-journeys-beginning.mdx",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "indonesia-the-journeys-beginning.mdx",
+                "file": "indonesia-abroad/indonesia-the-journeys-beginning.mdx",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "indonesia-the-journeys-beginning.mdx",
+                "file": "indonesia-abroad/indonesia-the-journeys-beginning.mdx",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "indonesia-the-journeys-beginning.mdx"
+                "file": "indonesia-abroad/indonesia-the-journeys-beginning.mdx"
               }
             }
           }
@@ -146,11 +146,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4395860af9034b64",
+  "active": "2b01bf4cf14c3ec0",
   "lastOpenFiles": [
+    "indonesia-abroad",
     "kirby-nightmare-dreamland.jpg",
     "reminiscing-with-emulators.mdx",
-    "indonesia-the-journeys-beginning.mdx",
+    "indonesia-abroad/indonesia-the-journeys-beginning.mdx",
     "kirby-nightmare-dreamland 1.jpg",
     "blog-assets.lnk",
     "New shortcut.lnk"
