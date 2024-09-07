@@ -16,7 +16,7 @@ import {
 } from 'pliny/mdx-plugins/index.js'
 // Rehype packages
 import rehypeSlug from 'rehype-slug'
-import rehypeMdxImportMedia from 'rehype-mdx-import-media'
+//import rehypeMdxImportMedia from 'rehype-mdx-import-media'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeKatex from 'rehype-katex'
 import rehypeCitation from 'rehype-citation'
@@ -155,12 +155,12 @@ export default makeSource({
       remarkGfm,
       remarkCodeTitles,
       remarkMath,
-      remarkImgToJsx,
+      //remarkImgToJsx,
       remarkAlert,
     ],
     rehypePlugins: [
       rehypeSlug,
-      rehypeMdxImportMedia,
+      //rehypeMdxImportMedia,
       [
         rehypeAutolinkHeadings,
         {
