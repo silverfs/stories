@@ -66,13 +66,16 @@ export default function Home({ posts }) {
                       <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                         <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
                         <div className="py-2 pr-3">
-                          <Image
-                            alt={title}
-                            src={images[0]}
-                            className="object-cover object-center"
-                            width={215}
-                            height={150}
-                          />
+                          <Link
+                              href={`/blog/${slug}`}                          >
+                              <Image
+                                alt={title}
+                                src={images[0]}
+                                className="object-cover object-center"
+                                width={215}
+                                height={150}
+                              />
+                          </Link>
                         </div>
                       </dd>
                     </dl>
