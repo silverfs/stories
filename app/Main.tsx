@@ -14,13 +14,13 @@ export default function Home({ posts }) {
           <h1 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
             I'm{' '}
             <span className="dark:from-secondary-700 dark:to-secondary-400 mt-10 bg-gradient-to-r from-primary-700 to-primary-400 bg-clip-text text-center text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl lg:text-6xl">
-              Shiruvaaa
+            <Link href="/">Shiruvaaa</Link>
             </span>{' '}
-            👋
+            🤠✌️
           </h1>
           <div className="dark:text-grey text-gray mb-8  mt-4 text-base">
             <p>
-              A guy with a passion for photography, music, food, and IT. <br /> (●'◡'●)
+              A guy with a passion for photography, traveling, music, food, and IT. <br /> (●'◡'●)
             </p>
             <p className="dark:text-grey text-gray mb-8   mt-4 text-sm">
               <span className="mr-3 inline-block whitespace-nowrap pt-3">📸 Photography</span>
@@ -52,6 +52,7 @@ export default function Home({ posts }) {
           </div>
 
           <p className="text-gray dark:text-gray text-lg leading-7">{siteMetadata.description}</p>
+          <br />
         </div>
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
