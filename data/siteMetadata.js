@@ -2,7 +2,7 @@
 const siteMetadata = {
   title: "Shiruvaaa's Stories ✨",
   author: 'Shiruvaaa',
-  headerTitle: 'Shiruvaaa',
+  headerTitle: "Shiruvaaa's Stories ✨",
   description: 'A collection of stories which may include travel-posts, reviews, and IT rants.',
   language: 'en-us',
   theme: 'system', // system, dark or light
