@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "photography/the-world-in-black-and-white.mdx",
+                "file": "research/the-wkcr-hijacking-incident.mdx",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "photography/the-world-in-black-and-white.mdx",
+                "file": "research/the-wkcr-hijacking-incident.mdx",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "photography/the-world-in-black-and-white.mdx",
+                "file": "research/the-wkcr-hijacking-incident.mdx",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "photography/the-world-in-black-and-white.mdx"
+                "file": "research/the-wkcr-hijacking-incident.mdx"
               }
             }
           }
@@ -148,9 +148,11 @@
   },
   "active": "4395860af9034b64",
   "lastOpenFiles": [
+    "photography/the-world-in-black-and-white.mdx",
+    "research/the-wkcr-hijacking-incident.mdx",
+    "research",
     "indonesia-abroad/kurshtop-surabaya.mdx",
     "static/images/blog/photography/car/jpg.md",
-    "photography/the-world-in-black-and-white.mdx",
     "static/images/blog/photography/car",
     "static/images/blog/photography",
     "static/images/blog",
@@ -159,7 +161,6 @@
     "the-world-in-black-and-white.md",
     "indonesia-abroad/indonesia-abroad-a-lot-of-walks.mdx",
     "photography",
-    "indonesia-abroad/pull-shot-tasikmalaya.mdx",
     "kirby-nightmare-dreamland.jpg",
     "kirby-nightmare-dreamland 1.jpg"
   ]
