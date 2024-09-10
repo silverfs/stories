@@ -7,19 +7,15 @@ interface Project {
 
 const projectsData: Project[] = [
   {
-    title: 'A Search Engine',
-    description: `What if you could look up any information in the world? Webpages, images, videos
-    and more. Google has many features to help you find exactly what you're looking
-    for.`,
-    imgSrc: '/static/images/google.png',
-    href: 'https://www.google.com',
+    title: 'Lychee',
+    description: `Want to see what I actually take photos of on a weekly basis? Take a look in my personal gallery, nicknamed "Lychee."`,
+    imgSrc: 'https://lychee.shiruvaaa.net/uploads/medium2x/a7/d9/ba5bea99c66038f1ae05b463e2ef.jpg',
+    href: 'https://lychee.shiruvaaa.net',
   },
   {
-    title: 'The Time Machine',
-    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
-    to the desired date and press "Go". No more worrying about lost keys or
-    forgotten headphones with this simple yet affordable solution.`,
-    imgSrc: '/static/images/time-machine.jpg',
+    title: 'The Wiki',
+    description: `Mostly for personal use, but maybe some info might be of use to you as well. Things I learn and are in need to be written down in regards to tech will be written down here.`,
+    imgSrc: '/static/images/project/wiki-shiruvaaa',
     href: '/blog/the-time-machine',
   },
 ]
