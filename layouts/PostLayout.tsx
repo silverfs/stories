@@ -61,7 +61,8 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               <dd>
                 <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8">
                   {authorDetails.map((author) => (
-                    <li className="flex items-center space-x-2" key={author.name}>
+                    <Link href="/about">
+                    <li className="flex items-center space-x-2" key={author.name}> 
                       {author.avatar && (
                         <Image
                           src={author.avatar}
@@ -89,6 +90,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                         </dd>
                       </dl>
                     </li>
+                    </Link>
                   ))}
                 </ul>
               </dd>
