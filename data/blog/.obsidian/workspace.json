@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "indonesia-abroad/indonesia-the-journeys-beginning.mdx",
+                "file": "indonesia-abroad/kurshtop-surabaya.mdx",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 381.5
   },
   "right": {
     "id": "02561c2ca28998cc",
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "indonesia-abroad/indonesia-the-journeys-beginning.mdx",
+                "file": "indonesia-abroad/kurshtop-surabaya.mdx",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "indonesia-abroad/indonesia-the-journeys-beginning.mdx",
+                "file": "indonesia-abroad/kurshtop-surabaya.mdx",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "indonesia-abroad/indonesia-the-journeys-beginning.mdx"
+                "file": "indonesia-abroad/kurshtop-surabaya.mdx"
               }
             }
           }
@@ -148,16 +148,18 @@
   },
   "active": "4395860af9034b64",
   "lastOpenFiles": [
-    "indonesia-abroad/indonesia-abroad-a-lot-of-walks.mdx",
-    "indonesia-abroad/indonesia-the-journeys-beginning.mdx",
+    "indonesia-abroad/pull-shot-tasikmalaya.mdx",
+    "indonesia-abroad/kurshtop-surabaya.mdx",
+    "indonesia-abroad/indonesia-abroad-kawah-ijen.mdx",
+    "indonesia-abroad/indonesia-abroad-marching-through-batu-malang-wilderness.mdx",
+    "indonesia-abroad/indonesia-abroad-more-festivities.mdx",
     "indonesia-abroad/indonesia-abroad-makanan.mdx",
-    "bruh-moments",
     "indonesia-abroad/indonesia-abroad-nature-adventure.mdx",
-    "indonesia-abroad",
-    "kirby-nightmare-dreamland.jpg",
+    "indonesia-abroad/indonesia-abroad-a-lot-of-walks.mdx",
     "bruh-moments/reminiscing-with-emulators.mdx",
-    "kirby-nightmare-dreamland 1.jpg",
-    "blog-assets.lnk",
-    "New shortcut.lnk"
+    "indonesia-abroad/indonesia-the-journeys-beginning.mdx",
+    "bruh-moments",
+    "kirby-nightmare-dreamland.jpg",
+    "kirby-nightmare-dreamland 1.jpg"
   ]
 }
