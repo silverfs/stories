@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "indonesia-abroad/kurshtop-surabaya.mdx",
+                "file": "photography/the-world-in-black-and-white.mdx",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "indonesia-abroad/kurshtop-surabaya.mdx",
+                "file": "photography/the-world-in-black-and-white.mdx",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "indonesia-abroad/kurshtop-surabaya.mdx",
+                "file": "photography/the-world-in-black-and-white.mdx",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "indonesia-abroad/kurshtop-surabaya.mdx"
+                "file": "photography/the-world-in-black-and-white.mdx"
               }
             }
           }
@@ -148,17 +148,18 @@
   },
   "active": "4395860af9034b64",
   "lastOpenFiles": [
-    "indonesia-abroad/pull-shot-tasikmalaya.mdx",
     "indonesia-abroad/kurshtop-surabaya.mdx",
-    "indonesia-abroad/indonesia-abroad-kawah-ijen.mdx",
-    "indonesia-abroad/indonesia-abroad-marching-through-batu-malang-wilderness.mdx",
-    "indonesia-abroad/indonesia-abroad-more-festivities.mdx",
-    "indonesia-abroad/indonesia-abroad-makanan.mdx",
-    "indonesia-abroad/indonesia-abroad-nature-adventure.mdx",
+    "static/images/blog/photography/car/jpg.md",
+    "photography/the-world-in-black-and-white.mdx",
+    "static/images/blog/photography/car",
+    "static/images/blog/photography",
+    "static/images/blog",
+    "static/images",
+    "static",
+    "the-world-in-black-and-white.md",
     "indonesia-abroad/indonesia-abroad-a-lot-of-walks.mdx",
-    "bruh-moments/reminiscing-with-emulators.mdx",
-    "indonesia-abroad/indonesia-the-journeys-beginning.mdx",
-    "bruh-moments",
+    "photography",
+    "indonesia-abroad/pull-shot-tasikmalaya.mdx",
     "kirby-nightmare-dreamland.jpg",
     "kirby-nightmare-dreamland 1.jpg"
   ]
