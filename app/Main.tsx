@@ -14,7 +14,7 @@ export default function Home({ posts }) {
           <h1 className="text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
             I'm{' '}
             <span className="dark:from-secondary-700 dark:to-secondary-400 mt-10 bg-gradient-to-r from-primary-700 to-primary-400 bg-clip-text text-center text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl lg:text-6xl">
-            <Link href="/">Shiruvaaa</Link>
+              <Link href="/">Shiruvaaa</Link>
             </span>{' '}
             🤠✌️
           </h1>
@@ -67,15 +67,14 @@ export default function Home({ posts }) {
                       <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
                         <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
                         <div className="py-2 pr-3">
-                          <Link
-                              href={`/blog/${slug}`}                          >
-                              <Image
-                                alt={title}
-                                src={images[0]}
-                                className="object-cover object-center"
-                                width={215}
-                                height={150}
-                              />
+                          <Link href={`/blog/${slug}`}>
+                            <Image
+                              alt={title}
+                              src={images[0]}
+                              className="object-cover object-center"
+                              width={215}
+                              height={150}
+                            />
                           </Link>
                         </div>
                       </dd>
