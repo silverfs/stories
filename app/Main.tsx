@@ -74,6 +74,7 @@ export default function Home({ posts }) {
                               className="object-cover object-center"
                               width={215}
                               height={150}
+                              style={{ width: 215, height: 150 }}
                             />
                           </Link>
                         </div>
