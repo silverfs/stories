@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/the-wkcr-hijacking-incident.mdx",
+                "file": "indonesia-abroad/indonesia-abroad-mojokerto.mdx",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/the-wkcr-hijacking-incident.mdx",
+                "file": "indonesia-abroad/indonesia-abroad-mojokerto.mdx",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "research/the-wkcr-hijacking-incident.mdx",
+                "file": "indonesia-abroad/indonesia-abroad-mojokerto.mdx",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/the-wkcr-hijacking-incident.mdx"
+                "file": "indonesia-abroad/indonesia-abroad-mojokerto.mdx"
               }
             }
           }
@@ -148,10 +148,11 @@
   },
   "active": "4395860af9034b64",
   "lastOpenFiles": [
-    "photography/the-world-in-black-and-white.mdx",
-    "research/the-wkcr-hijacking-incident.mdx",
-    "research",
     "indonesia-abroad/kurshtop-surabaya.mdx",
+    "indonesia-abroad/indonesia-abroad-mojokerto.mdx",
+    "research/the-wkcr-hijacking-incident.mdx",
+    "photography/the-world-in-black-and-white.mdx",
+    "research",
     "static/images/blog/photography/car/jpg.md",
     "static/images/blog/photography/car",
     "static/images/blog/photography",
@@ -160,7 +161,6 @@
     "static",
     "the-world-in-black-and-white.md",
     "indonesia-abroad/indonesia-abroad-a-lot-of-walks.mdx",
-    "photography",
     "kirby-nightmare-dreamland.jpg",
     "kirby-nightmare-dreamland 1.jpg"
   ]
