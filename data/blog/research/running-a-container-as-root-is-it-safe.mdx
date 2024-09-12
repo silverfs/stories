@@ -1,0 +1,327 @@
+---
+title: Running a Container as Root - Is It Safe?
+date: 2023-01-16
+lastmod: 2023-01-16
+tags:
+  - research
+summary: The increase of containerization used in building infrastructures and the technical properties of containers (when compared to virtual machines) make container security a subject worth looking into.
+images:
+  - https://lychee.shiruvaaa.net/uploads/medium/ff/f8/15be5b890264b2c6c4e84be9d2e9.jpg
+---
+
+![shipping-containers](https://lychee.shiruvaaa.net/uploads/medium/ff/f8/15be5b890264b2c6c4e84be9d2e9.jpg)
+
+While containers offer a lightweight and convenient way to package and deploy applications, running containers can still raise concerns about the potential impact of security breaches. Some argue that the benefits of using containers outweigh the risks, while others recommend following best practices and running them with a non-root user and other mitigations.
+
+In this article, I will explore the pros and cons of running a container as root and discuss whether it is safe to do so. I will also provide guidance on how to run a container as a non-root user and the benefits of doing so. Overall, this article aims to provide a balanced perspective on the issue and will help to make an informed decision about how to run containers.
+
+## What is a container?
+
+First and foremost, a container is a lightweight, stand-alone, executable package that includes everything needed to run an application, including the application code, libraries, dependencies, and runtime. Containers provide a consistent environment for development, testing, and deployment, and they can be easily moved between computing environments. Containers offer portability, consistency, resource isolation, and ease of use.
+
+You have probably heard of Docker before, but in case you didn't, here's a short definition.  
+Docker is mainly a software development platform and kind of a virtualization technology that makes it easy for us to develop and deploy apps inside of neatly packaged, virtual containerized environments. Meaning, applications run the same, no matter where they are or what host machine they are running on.
+
+Docker is a form of virtualization, but, unlike normal virtual machines, the resources are shared directly with the host. Not only that, but Docker uses less disk space too, as it is able to reuse files efficiently by using a layered file system.
+
+![containerization-os-architecture](/static/images/blog/research/container-as-root/image-4.png)
+
+## What does it mean to run a container as root?
+
+By default, Docker containers run as the root user, unless of course, the image is manually made to not run with a root user. This means that any processes or commands that are run inside the container will have full root privileges within the container.
+
+Most of the time, it is not recommended to run Docker containers as the root user, because doing so can present a security risk. This is because the root user has unrestricted access to the host system and running such container can potentially give an attacker full access to the host system if they manage to compromise the container.
+
+Instead, you can create a non-root user with limited privileges to run the container. This helps to limit the potential damage that could be done if the container were to be compromised.
+
+Additionally, many Docker images you find online are designed to be run as non-root users and may not function correctly if run as root.
+
+In summary, it is generally safer to run Docker containers as a non-root user with limited privileges rather than as the root user.
+
+---
+
+It is generally recommended to run Docker containers as non-root users whenever possible to reduce the potential impact of a compromise. You can specify a non-root user to run, using the `USER` directive in the `Dockerfile` when building the image for the container.
+
+For example, the following `Dockerfile` specifies that the `nginx` user should be used to run any commands in the container:
+
+```Dockerfile
+FROM alpine:3.9
+RUN adduser -D nginx
+USER nginx
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+When the container is running, all commands in the container will be executed as the Nginx user, rather than as the root user.  
+You can also specify a specific UID or GID to run as using the USER directive. This can be useful if you want to run the container as a specific user or group on the host system.
+
+```Dockerfile
+FROM alpine:3.9
+USER 1001
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+In this example, the container will run all commands as the user with UID 1001 on the host system.
+
+---
+
+## My root user is password protected. Is my host safe?
+
+It is possible that an attacker could potentially exploit a vulnerability in a Docker container running as the root user to gain access to the host system.
+
+If an attacker is able to compromise the container and gain access to a root shell inside the container, they would have full root privileges within the container. This could allow them to potentially gain access to host resources, depending on how the container is configured and how the host system is set up.
+
+For example, if the container has access to the host's network or file system through bind mounts or volumes, an attacker with access to a root shell in the container could potentially read or modify host files, or send network traffic that appears to originate from the host system. But how does that work?
+
+One way of doing this is by privilege escalation. This will be a very specific example, and there are other ways to do this. This simple example will demonstrate how to gain root privileges for a non-root user on a host with Docker. I will use WSL2 Ubuntu 22.04 on my Windows PC. To be able to follow along, you must have Docker installed.
+
+---
+
+I created a non-root user named Testuser that we will be promoting with sudo privileges. What we want to accomplish here is ensuring that our Testuser will be able to execute root commands on the host using Docker. This can be done without knowing the root password.
+
+I began by setting up the user Testuser using `adduser testuser`.
+
+![](/static/images/blog/research/container-as-root/image-1.png)
+
+Testuser needs to be able to work with docker first, so let's add him to the docker group:
+
+`usermod -aG docker testuser`
+
+Now , check with `getent group` to see the that Testuser is added to the docker group:
+
+![](/static/images/blog/research/container-as-root//image-2.png)
+
+Let's login as Testuser and create a directory in his home directory like so:
+
+`mkdir vulnerability`
+
+The Testuser should be able to run docker commands. Now that we set up everything, let's head into the 'vulnerability' folder to create a Dockerfile like so:
+
+`nano Dockerfile`
+
+Paste the following lines and exit the file.
+
+```Dockerfile
+FROM debian:wheezy
+
+ENV WORKDIR /escalation
+
+RUN mkdir -p $WORKDIR
+
+VOLUME [ $WORKDIR]
+
+WORKDIR $WORKDIR
+```
+
+To briefly go over this:
+
+- `FROM debian:wheezy` pulls and uses a generally known docker image that we can use as a base.
+- `ENV WORKDIR /escalation` sets an environment variable that specifies where we want to work out of. This directory will act as the mount point for the real file system of the host that we are going to take advantage of.
+- `RUN mkdir -p $WORKDIR` creates a folder named after the the environment WORKDIR. As a normal user, you cannot create a folder in the root of the filesystem. However, as the Dockerfile runs as root within the container, it should be able to do that.
+- `VOLUME [ $WORKDIR]`. From here, we consider this a place that the container can work through, so we'll call it a volume.
+- Finally, `WORKDIR $WORKDIR` sets the environment WORKDIR as the work directory.
+
+From this point on, we are going to build the image. Vulnerability will be the name of the image, the dot will specify the location of the Dockerfile. In this case, it's in our current directory.
+
+`docker build -t vulnerability .`
+
+To check if the image is really there, perform `docker image ls`. Once we've successfully built our image, we should be able to run a container with it.
+
+`docker run -v /:/escalation -it vulnerability /bin/bash`
+
+This command will run a container. It will then use the host's root file system as `/` and maps it to the work directory folder inside the container we specified earlier in the Dockerfile. In this case, its `/escalation`. After that, the `-it` runs Docker interactively, so we'll immediately get into the container upon running the command.
+
+<br />
+
+```md
+❓If you use WSL2 and the `docker run` command does not work, You will have to
+follow the steps below. This does not apply to non-WSL.
+
+- Head to your Windows machine and create a file in your userprofile called
+  `.wslconfig` if it's not already there.(`%userprofile%\.wslconfig`)
+- Inside this file, paste the following: `[wsl2]kernelCommandLine = vsyscall=emulate`
+- After that, shut down your WSL instance in Powershell with: `wsl --shutdown`
+- Reboot your Docker intallation and log back into your WSL2 commandline.
+- proceed with the guide.
+```
+
+_For more information on the issue, click [here](https://github.com/microsoft/WSL/issues/4694#issuecomment-)_.
+
+---
+
+<br />
+
+Now that we're in, we'll perform a quick `ls` command to see that the entirety of the host's root file system, which is mapped inside our `/escalation` folder.
+
+![](/static/images/blog/research/container-as-root/image-3.png)
+
+From here on out, we could already do anything we want, as the container runs as root. Now, things like `nano` will not work within the container, as we didn't install them with it. But that should be fine. We can just echo and append commands to files in order to get things done. Let's give our Test user root privileges!
+
+The command for giving a user all sudo commands without a password is:
+
+`$username ALL=(ALL) NOPASSWD: ALL`
+
+now, we'd want to echo this command and append it into `/escalation/etc/sudoers`.
+
+`echo "testuser ALL=(ALL) NOPASSWD: ALL" >> /escalation/etc/sudoers`
+
+Now, executing a simple `cat /escalation/etc/sudoers` shows that the Test user has been added successfully.
+
+![](/static/images/blog/research/container-as-root/image-5.png)
+
+Without ever knowing the root's password, we gave the test user the ability to execute every and all commands without needing a root password.
+
+---
+
+<br />
+
+## What could be done to mitigate this?
+
+To reduce the risk of this type of attack, it is recommended to run Docker containers as non-root users whenever possible. This limits the potential damage that could be done if the container were to be compromised, as the attacker would not have full root privileges on the host system.
+
+In addition to running containers as non-root users, it is also important to ensure that containers are running up-to-date software and are properly configured to limit their access to host resources. This can help to reduce the potential attack surface and make it more difficult for an attacker to compromise the container and gain access to the host system, or other potential systems in the network.
+
+---
+
+The increase of containerization (e.g. Docker) used in building infrastructures and the technical properties of containers (when compared to virtual machines) make container security a subject worth looking into. For both ethical hackers and security engineers.
+
+Generally speaking, two categories of security issues can be distinguished:
+
+- Configuration issues: e.g. due to inexperience of engineers with containerization, underestimating the consequences of a hacked container. This leads to assigning too many capabilities to a container to get it up-and-running, using outdated images, unrestricted network access from container to other containers, insufficient hardening and testing, etc.
+- Bugs in containerization software itself, e.g. CVE's.
+
+From an attacker point of view, an environment based on containerization offers two types of attack surface:
+
+- Containerization software running on a server. This software needs elevated privileges to operate. Can it be used for (local) privilege escalation?
+- Container itself: if a container is compromised, can a attacker break out and reach other systems or the host (server) itself? (lateral movement)
+
+We've already seen the latter one in real action, but let's not neglect the defending side and see what could be some best practices that we can work with.
+
+\***\*CVE's\*\***
+
+Common Vulnerabilities and Exposures (CVE's) are publicly known information-security vulnerabilities and exposures. In many cases, containers are used as web-applications. One thing you'll always come across with web-applications are unsecured web-applications with hidden vulnerabilities. It is always recommended to scan for such weaknesses in an application. Methods like [SonarCloud's](https://www.sonarsource.com/products/sonarcloud/) quality gate or Dependabot on Github are nice tools that can help close exposures.
+
+Recently, Docker included a new command called `docker scan`. This scan command was designed to detect the Text4Shell [CVE-2022-42889](https://nvd.nist.gov/vuln/detail/CVE-2022-42889) vulnerability and many others. To be able to work with `docker scan` you need an account on Docker Hub.  
+All these scanning tools and usage of them shows how easy it is for a web-application to be vulnerable, and that includes web applications in Containers.
+
+\***\*Volume Management\*\***
+
+Mounting host directories as volumes in Docker containers can introduce security risks because it allows the container to access and potentially modify host files. This can be problematic for sensitive data, such as configuration files or private keys, that are stored on the host system.
+
+If an attacker is able to gain access to the container, they could potentially use the volume mount to exfiltrate sensitive data from the host system or to modify the host system's configuration in a way that allows them to maintain access.
+
+Additionally, if the host directory is shared with other containers, it could lead to data leakage or data corruption.
+
+---
+
+<br />
+
+Another small example that focuses more on infiltration, uses an Nginx container with the following volume configuration.
+
+![](/static/images/blog/research/container-as-root/image-6.png)
+
+To simulate an infiltration attack, I run a docker exec command to get into the container. The command would look somewhat like this:
+
+`sudo docker exec -it <container_name> sh`
+
+From an outside perspective, you can figure out through multiple ways on what kind of server the application it's running. In this case, it is a plain old Nginx back-end.
+
+From this point on, the attacker found a way to get into the container. Knowing that is Nginx, the attacker would search for an Nginx location within the container. In this case, it would be `/user/share/nginx/html/videos`. Here, it would not really matter if the attacker knew what folder was mounted specifically. As he is a root user inside the container, he can just look inside of every folder and try to upload scripts, malware and do much more from that point on.
+
+For now, we will just create a folder within the right mounted folder:
+
+![](/static/images/blog/research/container-as-root/image-7.png)
+
+And from the host, we can see that it successfully created the folder inside the mounted folder:
+
+![](/static/images/blog/research/container-as-root/image-8.png)
+
+It is really that easy.
+
+\***\*Prevention\*\***
+
+Let's keep this Nginx profile and think of ways to prevent infiltration.
+
+1. Make sure the Nginx web-app doesn't contain any bugs and been going through multiple test stages, including code-scans. You can also take the option of of using a framework like React or Vue, which helps in managing security of your web application.
+2. Expose your Nginx web-app container behind a Reverse Proxy. Reverse proxy can greatly increase the security of your hosted services by Hiding the internal network, making use of SSL termination, which means they can handle the decryption of incoming HTTPS traffic and then forward the unencrypted traffic to the internal web-app. It can also help with Authorization and authentication and helps with DDoS protection. Overall a good security measure.
+3. Using a Web Application Firewall (WAF), especially in combination with a reverse proxy, can greatly enhance the security of your web application. It brings protection against common web attacks like SQL injection, will do a great job with logging traffic and can make use of customized security rules. It even helps to improve the performance by offloading certain security-related tasks, such as filtering or blocking malicious traffic.
+4. If possible, do not provide root access inside the container and manage the permissions on the volume mounts. Make sure to only mount directories that are necessary for the container's operation and to ensure that the container does not have write access to mounted volumes unless it is absolutely necessary.
+
+Speaking about storage:
+
+> Bind mounts have been around since the early days of Docker. Bind mounts have limited functionality compared to [volumes](https://docs.docker.com/storage/volumes/). When you use a bind mount, a file or directory on the **host machine** is mounted into a container. The file or directory is referenced by its absolute path on the host machine. By contrast, when you use a volume, a new directory is created within Docker’s storage directory on the host machine, and Docker manages that directory’s contents.
+
+**~** [**docs.docker.com**](https://docs.docker.com/storage/bind-mounts/)
+
+To put it in another way, Docker volumes and bind mounts are both ways to mount a host directory or file into a container, but they have some key differences.
+
+Volumes are managed by Docker, and exist outside the container's filesystem. They can be created, backed up, and migrated independently of the container's filesystem. Volumes are also stored on the host in a location that is managed by Docker and can be easily accessed by other containers or external tools. Volumes can also be used to persist data. Deleting a container does not remove the volume.
+
+Bind mounts, on the other hand, mount a host file or directory directly into the container's filesystem (e.g.: `/mnt/website/github.pem:/etc/nginx/keys/github.pem`). Any changes made to the bind mount will be immediately reflected on the host, and vice versa. Bind mounts are not managed by Docker and are not easily accessible by other containers or external tools. Bind mount(s) are deleted when the container gets deleted.
+
+Overall, volumes provide more flexibility and management features than bind mounts, and are typically the preferred option for storing data that needs to be persisted or shared between containers. However, bind mounts can be useful for quickly testing changes or for development purposes.
+
+Now that we know a bit more in depth about Docker storage management, there are some things worth mentioning that can help with the security.
+
+For some development applications, the container needs to write into the bind mount so that changes are made in sync back to the Docker host. At other times, the container only needs read access. Multiple containers can mount the same volume. You can simultaneously mount a single volume as read-write for some containers and as read-only for others.  
+In volume terms, this would result in:
+
+`/mnt/website/github.pem:/etc/nginx/keys/github.pem:ro`
+
+Which limits the container to read-only access to this specific file. Of course, it can also apply to folders.
+
+<br />
+
+## Overview
+
+Let's look back on what we've talked about. We now know what a container is and what it is used for. Using Docker as an example, we tried to demonstrate some bad examples and a way to showcase you how easy it is for a container or a host to be compromised, even when you think that it is secure. Lastly, we reviewed security measures to help strengthen not only the IT security, but also your mindset. After all, it is important to take appropriate measures and not be lazy when it comes to safeguarding your applications and infrastructure.
+
+<br />
+
+## Conclusion
+
+In conclusion, running a container as root can pose significant security risks if not properly configured and managed. It is important to understand the potential vulnerabilities and take steps to mitigate them, such as using a non-root user, implementing proper file permissions, and regularly updating the container image. Additionally, it is crucial to keep an eye on the container's activity and take action if any suspicious behavior is detected. Despite the risks, running a container as root can still be a viable option if the proper security measures are put in place and regularly maintained.
+
+<br />
+
+---
+
+## Sources
+
+<br />
+
+- [Privilege escalation in Docker](https://flast101.github.io/docker-privesc/)
+- [Docker security announcements](https://docs.docker.com/security/)
+- [Bind Mounts](https://docs.docker.com/storage/bind-mounts/)
+- [Volumes](https://docs.docker.com/storage/volumes/)
+- [Docker Privilege Execution](https://securiumsolutions.com/blog/docker-privilege-escalation)
+- [Shiruvaaa's Wiki | Docker](https://wiki.shiruvaaa.net/en/manuals/docker)
+- [NGINX Proxy Manager](https://nginxproxymanager.com/guide/#project-goal)
+
+<br />
+
+---
+
+<br />
+
+### Unrelated Notes
+
+<br />
+
+_The Docker Engine_
+
+The Docker daemon (also known as the Docker engine) runs as the root user by default on most systems. This means that the Docker daemon has full root privileges on the host system and can perform any action that the root user is permitted to do.
+
+Running the Docker daemon as the root user does pose some security risks. For example, if the Docker daemon were to be compromised, an attacker could potentially gain full access to the host system. This is because the Docker daemon has full root privileges on the host and can perform any action that the root user is permitted to do.
+
+To mitigate this risk, it is recommended to take the following steps:
+
+1. Run the Docker daemon with the `--userns-remap` flag to enable user namespacing. This can help to isolate the Docker daemon from the host system and reduce the potential impact of a compromise.
+2. Use AppArmor or SELinux to further restrict the actions that the Docker daemon can perform.
+3. Configure the Docker daemon to listen on a Unix socket rather than a TCP port. This can help to reduce the attack surface by making it more difficult for an attacker to connect to the Docker daemon.
+4. Use a firewall to restrict access to the Docker daemon to trusted sources only.
+
+By taking these steps, you can help to reduce the potential risk of a compromise of the Docker daemon and limit the potential impact on the host system.
+
+- _https://book.hacktricks.xyz/linux-hardening/privilege-escalation/docker-breakout/abusing-docker-socket-for-privilege-escalation_
+
+<br />

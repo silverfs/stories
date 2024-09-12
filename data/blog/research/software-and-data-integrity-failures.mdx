@@ -1,0 +1,100 @@
+---
+title: Software and Data Integrity Failures - What It Is And How To Prevent It
+date: 2022-03-10
+lastmod: 2022-03-10
+tags:
+  - research
+summary: You probably think you out of all people are looking out for your projects, but you'd be surprised to find out there's a lot more going around behind the scenes...
+images:
+  - /static/images/blog/research/drive-partition.jpeg
+---
+
+![Photo from Unsplash by Shahadat Rahman](https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg)
+
+<br />
+
+## What are we talking about?
+
+Today, I wanted to talk about Software and Data Integrity Failures. Let's take a look at data integrity first.  
+To put it simply, Data integrity is about ensuring the accuracy of a message. Such that when it's read, it's exactly the same as when it was first written.  
+The same thing can be applied to software integrity. When we are not sure of the integrity of the software we use in our application - e.g. a library, package or extension - we talk about an integrity failure. People often make assumptions related to software updates, critical data, and CI/CD pipelines without verifying integrity _[1]_. An application can easily rely upon libraries, plugins, extensions and more from untrusted sources. An example of this includes objects or data encoded or serialized into a structure that an attacker can modify.
+
+When this happens, it means that the related software fails to protect against integrity violations. A great example on this is the SolarWinds Orion attack [2]:
+
+> On December 13, 2020, FireEye announced the discovery of a highly sophisticated cyber intrusion that leveraged a commercial software application made by SolarWinds. It was determined that the advanced persistent threat (APT) actors infiltrated the supply chain of SolarWinds, inserting a backdoor into the product. As customers downloaded the Trojan Horse installation packages from SolarWinds, attackers were able to access the systems running the SolarWinds product(s).
+
+The attack was said to be distributed to more than 18.000 organizations and is one of the most known and significant breaches of this subject.
+
+Software and data integrity failures lead to software either straight up executing the attacker's code or prying open a backdoor via combined measures.
+
+According to the [OWASP](https://owasp.org/Top10/) list of 2021, Software and Data Integrity Failures is listed eight, but despite being in the top 10, the severity of the problem seems to be underestimated in comparison to higher ranked categories and is actually more of a disturbing problem than initially thought.
+
+<br />
+
+## Poor checks - How do we identify them?
+
+Ensuring the integrity of software and data proves to be harder by the years, due to the continuous evolution of technologies and the mentality behind it. Checking the integrity of software isn't just a matter of trusting the source, which what most people blindly do. After all, even software can be tampered with at not even the source, but in transit or in the endpoint cache as well.
+
+\***\*Faulty assumptions\*\***  
+Assumptions are often the cause of preventable software failures. As assumptions are easily being said without being documented, they can easily lead to overlooking problems and preventable errors.
+
+An article _[3]_ has the following interesting take on common assumptions:
+
+> Consider a recent project that required you to design and build a software (or even a physical) object. How many design decisions did you base on evidence versus local custom? Often, the unwritten ways in which the organization’s development and security staff “know” how projects typically deploy and operate fundamentally affects design decisions. Because these local customs are implicit, they’re rarely questioned, even as they drive project requirements.
+
+This paragraph made me question the software customs that I use and grow with. What most people brush off as normal or obvious, as the packages or plugins you use are trusted, widely used and open-source are used by many, including me.  
+Sure, the software you use won't have any malicious intent, but the people who'd manipulate this said software most likely do. By no means should you just "trust" commonly used software, assuming that everything is set up right. The SolarWinds Orion Attack [2]\_ proves all the more that not everything is as it may seem.
+
+Software developers split up services without thinking about the necessary integrity checks. Previously made security assumptions do not carry over.
+
+> There is another likely contributing factor. The remote procedure call (RPC) protocols are becoming so much better and easier to use. The industry is converging rapidly on the gRPC suite. Developers rely on gRPC, frameworks, libraries, and much more than they ought to. Perhaps, half of the assumptions stem from the expectation that an RPC protocol or a trending NPM utility package already ensures data integrity. Similarly, an update coming from a **familiar** source is also deemed safe.
+
+Hence, a familiar cause concluded by securityjourney.com _[4]._
+
+<br />
+
+## How do we prevent this?
+
+As stated in the OWASP top 10 - number 8 _[1]_, there are some methods to prevention. But how exactly do they work? Below are some explained prevention methods that should help giving a better overview on this matter.
+
+- \***\*Use digital signatures or similar mechanisms to verify the software or data is from the expected source and has not been altered.\*\***  
+   **A great file verification method is hash checking. A hash is a checksum or digital fingerprint created by a one-way hash function equivalent. One can have a pretty safe software experience by checking the hash provided by the developer vs the hash of the downloaded software.**
+
+- \***\*Ensure libraries and dependencies, such as npm or Maven, are consuming trusted repositories. If you have a higher risk profile, consider hosting an internal known-good repository that's vetted.\*\***  
+   **Software repositories that maintain software packages store container images which represent executable packages that are used by e.g. npm. These repositories work with build tools and package managers.**
+
+- \***\*Ensure that a software supply chain security tool, such as OWASP Dependency Check or OWASP CycloneDX, is used to verify that components do not contain known vulnerabilities.\*\***  
+   **As the sentence implies, there exist multiple tools to verify known vulnerabilities. Those tools are always welcome to enhance the security of a project.**
+
+- \***\*Ensure that there is a review process for code and configuration changes to minimize the chance that malicious code or configuration could be introduced into your software pipeline.\*\***  
+   **Use dependency checks and vulnerability check tools such as Sonarcloud to minimize risks. Check not only for vulnerabilities, but also for bugs, code-smells, security hotspots and more.**
+
+- \***\*Ensure that your CI/CD pipeline has proper segregation, configuration, and access control to ensure the integrity of the code flowing through the build and deploy processes.\*\***  
+   **Have broad standards when it comes to your CI/CD pipelines. Be sure to use access control and have decent checks on pull requests.**
+
+- \***\*Ensure that unsigned or unencrypted serialized data is not sent to untrusted clients without some form of integrity check or digital signature to detect tampering or replay of the serialized data.\*\***  
+   **Use trusted third-party or inbuild resources to encrypt packages/images and make use of hashes.**
+
+<br />
+
+## Conclusion
+
+The use of software from untrusted sources, tampered source code or blind trust in packages/plugins are a big factor in causes of software and data integrity failures. Because of (for a big part) a lazy mentality, this often gets overlooked as a minor topic, but is actually quite serious and will continue to develop behind the scenes. We can counter catastrophic failures by actively maintaining security regarding not only the products we use in our projects, but also the projects themselves.
+
+---
+
+## Sources
+
+**[1] -** OWASP Top 10: [Software_and_Data_Integrity_Failures](https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/)
+
+**[2] - SolarWinds Cyber-Attack:** [The SolarWinds Cyber-Attack: What You Need to Know](https://www.cisecurity.org/solarwinds)
+
+**[3]** - **An article from Computer.org magazine**: [https://www.thesecuritypractice.com/the_security_practice/papers/84-87.pdf](https://www.thesecuritypractice.com/the_security_practice/papers/84-87.pdf)
+
+**[4]** - **Securityjourney.com**: [Making sense of OWASP A08:2021 – Software & Data Integrity Failures](https://www.securityjourney.com/post/making-sense-of-owasp-a08-2021-software-data-integrity-failures)
+
+<br />
+
+    ### Others
+
+[CWE - CWE-565: Reliance on Cookies without Validation and Integrity Checking (4.6)](https://cwe.mitre.org/data/definitions/565.html)

@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "4395860af9034b64",
+            "id": "861f4119421042a7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "indonesia-abroad/indonesia-abroad-mojokerto.mdx",
+                "file": "research/running-a-container-as-root-is-it-safe.mdx",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "indonesia-abroad/indonesia-abroad-mojokerto.mdx",
+                "file": "research/running-a-container-as-root-is-it-safe.mdx",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "indonesia-abroad/indonesia-abroad-mojokerto.mdx",
+                "file": "research/running-a-container-as-root-is-it-safe.mdx",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "indonesia-abroad/indonesia-abroad-mojokerto.mdx"
+                "file": "research/running-a-container-as-root-is-it-safe.mdx"
               }
             }
           }
@@ -146,21 +146,21 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "4395860af9034b64",
+  "active": "861f4119421042a7",
   "lastOpenFiles": [
-    "indonesia-abroad/kurshtop-surabaya.mdx",
-    "indonesia-abroad/indonesia-abroad-mojokerto.mdx",
     "research/the-wkcr-hijacking-incident.mdx",
+    "research/software-and-data-integrity-failures.mdx",
+    "research/running-a-container-as-root-is-it-safe.mdx",
+    "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
+    "indonesia-abroad/indonesia-abroad-mojokerto.mdx",
+    "indonesia-abroad/kurshtop-surabaya.mdx",
     "photography/the-world-in-black-and-white.mdx",
     "research",
     "static/images/blog/photography/car/jpg.md",
     "static/images/blog/photography/car",
     "static/images/blog/photography",
     "static/images/blog",
-    "static/images",
-    "static",
     "the-world-in-black-and-white.md",
-    "indonesia-abroad/indonesia-abroad-a-lot-of-walks.mdx",
     "kirby-nightmare-dreamland.jpg",
     "kirby-nightmare-dreamland 1.jpg"
   ]
