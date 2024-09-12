@@ -35,7 +35,8 @@ According to the [OWASP](https://owasp.org/Top10/) list of 2021, Software and Da
 
 Ensuring the integrity of software and data proves to be harder by the years, due to the continuous evolution of technologies and the mentality behind it. Checking the integrity of software isn't just a matter of trusting the source, which what most people blindly do. After all, even software can be tampered with at not even the source, but in transit or in the endpoint cache as well.
 
-\***\*Faulty assumptions\*\***  
+**Faulty assumptions**
+
 Assumptions are often the cause of preventable software failures. As assumptions are easily being said without being documented, they can easily lead to overlooking problems and preventable errors.
 
 An article _[3]_ has the following interesting take on common assumptions:
@@ -57,23 +58,23 @@ Hence, a familiar cause concluded by securityjourney.com _[4]._
 
 As stated in the OWASP top 10 - number 8 _[1]_, there are some methods to prevention. But how exactly do they work? Below are some explained prevention methods that should help giving a better overview on this matter.
 
-- \***\*Use digital signatures or similar mechanisms to verify the software or data is from the expected source and has not been altered.\*\***  
-   **A great file verification method is hash checking. A hash is a checksum or digital fingerprint created by a one-way hash function equivalent. One can have a pretty safe software experience by checking the hash provided by the developer vs the hash of the downloaded software.**
+- Use digital signatures or similar mechanisms to verify the software or data is from the expected source and has not been altered.
+  **A great file verification method is hash checking. A hash is a checksum or digital fingerprint created by a one-way hash function equivalent. One can have a pretty safe software experience by checking the hash provided by the developer vs the hash of the downloaded software.**
 
-- \***\*Ensure libraries and dependencies, such as npm or Maven, are consuming trusted repositories. If you have a higher risk profile, consider hosting an internal known-good repository that's vetted.\*\***  
-   **Software repositories that maintain software packages store container images which represent executable packages that are used by e.g. npm. These repositories work with build tools and package managers.**
+- Ensure libraries and dependencies, such as npm or Maven, are consuming trusted repositories. If you have a higher risk profile, consider hosting an internal known-good repository that's vetted.
+  **Software repositories that maintain software packages store container images which represent executable packages that are used by e.g. npm. These repositories work with build tools and package managers.**
 
-- \***\*Ensure that a software supply chain security tool, such as OWASP Dependency Check or OWASP CycloneDX, is used to verify that components do not contain known vulnerabilities.\*\***  
-   **As the sentence implies, there exist multiple tools to verify known vulnerabilities. Those tools are always welcome to enhance the security of a project.**
+- Ensure that a software supply chain security tool, such as OWASP Dependency Check or OWASP CycloneDX, is used to verify that components do not contain known vulnerabilities.
+  **As the sentence implies, there exist multiple tools to verify known vulnerabilities. Those tools are always welcome to enhance the security of a project.**
 
-- \***\*Ensure that there is a review process for code and configuration changes to minimize the chance that malicious code or configuration could be introduced into your software pipeline.\*\***  
-   **Use dependency checks and vulnerability check tools such as Sonarcloud to minimize risks. Check not only for vulnerabilities, but also for bugs, code-smells, security hotspots and more.**
+- Ensure that there is a review process for code and configuration changes to minimize the chance that malicious code or configuration could be introduced into your software pipeline.
+  **Use dependency checks and vulnerability check tools such as Sonarcloud to minimize risks. Check not only for vulnerabilities, but also for bugs, code-smells, security hotspots and more.**
 
-- \***\*Ensure that your CI/CD pipeline has proper segregation, configuration, and access control to ensure the integrity of the code flowing through the build and deploy processes.\*\***  
-   **Have broad standards when it comes to your CI/CD pipelines. Be sure to use access control and have decent checks on pull requests.**
+- Ensure that your CI/CD pipeline has proper segregation, configuration, and access control to ensure the integrity of the code flowing through the build and deploy processes.
+  **Have broad standards when it comes to your CI/CD pipelines. Be sure to use access control and have decent checks on pull requests.**
 
-- \***\*Ensure that unsigned or unencrypted serialized data is not sent to untrusted clients without some form of integrity check or digital signature to detect tampering or replay of the serialized data.\*\***  
-   **Use trusted third-party or inbuild resources to encrypt packages/images and make use of hashes.**
+- Ensure that unsigned or unencrypted serialized data is not sent to untrusted clients without some form of integrity check or digital signature to detect tampering or replay of the serialized data.
+  **Use trusted third-party or inbuild resources to encrypt packages/images and make use of hashes.**
 
 <br />
 
