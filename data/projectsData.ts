@@ -1,8 +1,8 @@
 interface Project {
-  title: string,
-  description: string,
-  href?: string,
-  imgSrc?: string,
+  title: string
+  description: string
+  href?: string
+  imgSrc?: string
 }
 
 const projectsData: Project[] = [
@@ -16,7 +16,7 @@ const projectsData: Project[] = [
     title: 'The Wiki',
     description: `Mostly for personal use, but maybe some info might be of use to you as well. Things I learn and are in need to be written down in regards to tech will be written down here.`,
     imgSrc: '/static/images/project/wiki-shiruvaaa',
-    href: '/blog/the-time-machine',
+    href: 'https://wiki.shiruvaaa.net',
   },
 ]
 
