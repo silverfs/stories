@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "dd6dc354f5dcd57b",
+        "id": "ecbbac789f632600",
         "type": "tabs",
         "children": [
           {
-            "id": "861f4119421042a7",
+            "id": "9799e38bfa70bb2c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/running-a-container-as-root-is-it-safe.mdx",
+                "file": "research/home-server-security.mdx",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/running-a-container-as-root-is-it-safe.mdx",
+                "file": "research/home-server-security.mdx",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "research/running-a-container-as-root-is-it-safe.mdx",
+                "file": "research/home-server-security.mdx",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/running-a-container-as-root-is-it-safe.mdx"
+                "file": "research/home-server-security.mdx"
               }
             }
           }
@@ -146,12 +146,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "861f4119421042a7",
+  "active": "9799e38bfa70bb2c",
   "lastOpenFiles": [
-    "research/the-wkcr-hijacking-incident.mdx",
     "research/software-and-data-integrity-failures.mdx",
     "research/running-a-container-as-root-is-it-safe.mdx",
+    "research/home-server-security.mdx",
     "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
+    "research/the-wkcr-hijacking-incident.mdx",
     "indonesia-abroad/indonesia-abroad-mojokerto.mdx",
     "indonesia-abroad/kurshtop-surabaya.mdx",
     "photography/the-world-in-black-and-white.mdx",
@@ -159,7 +160,6 @@
     "static/images/blog/photography/car/jpg.md",
     "static/images/blog/photography/car",
     "static/images/blog/photography",
-    "static/images/blog",
     "the-world-in-black-and-white.md",
     "kirby-nightmare-dreamland.jpg",
     "kirby-nightmare-dreamland 1.jpg"
