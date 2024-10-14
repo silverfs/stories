@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/home-server-security.mdx",
+                "file": "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/home-server-security.mdx",
+                "file": "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "research/home-server-security.mdx",
+                "file": "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/home-server-security.mdx"
+                "file": "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx"
               }
             }
           }
@@ -148,8 +148,10 @@
   },
   "active": "a974480a9d532685",
   "lastOpenFiles": [
-    "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
+    "indonesia-abroad/indonesia-abroad-kawah-ijen.mdx",
+    "indonesia-abroad/indonesia-abroad-makanan.mdx",
     "research/home-server-security.mdx",
+    "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
     "indonesia-abroad/kurshtop-surabaya.mdx",
     "research/software-and-data-integrity-failures.mdx",
     "research/running-a-container-as-root-is-it-safe.mdx",
@@ -158,8 +160,6 @@
     "photography/the-world-in-black-and-white.mdx",
     "research",
     "static/images/blog/photography/car/jpg.md",
-    "static/images/blog/photography/car",
-    "static/images/blog/photography",
     "the-world-in-black-and-white.md",
     "kirby-nightmare-dreamland.jpg",
     "kirby-nightmare-dreamland 1.jpg"
