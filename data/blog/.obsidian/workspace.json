@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
+                "file": "research/home-server-security.mdx",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
+                "file": "research/home-server-security.mdx",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
+                "file": "research/home-server-security.mdx",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx"
+                "file": "research/home-server-security.mdx"
               }
             }
           }
@@ -148,8 +148,8 @@
   },
   "active": "a974480a9d532685",
   "lastOpenFiles": [
-    "research/home-server-security.mdx",
     "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
+    "research/home-server-security.mdx",
     "indonesia-abroad/kurshtop-surabaya.mdx",
     "research/software-and-data-integrity-failures.mdx",
     "research/running-a-container-as-root-is-it-safe.mdx",
