@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "ecbbac789f632600",
+        "id": "5846fa48b319617b",
         "type": "tabs",
         "children": [
           {
-            "id": "9799e38bfa70bb2c",
+            "id": "a974480a9d532685",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "research/home-server-security.mdx",
+                "file": "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 381.5
+    "width": 233.5
   },
   "right": {
     "id": "02561c2ca28998cc",
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "research/home-server-security.mdx",
+                "file": "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "research/home-server-security.mdx",
+                "file": "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "research/home-server-security.mdx"
+                "file": "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx"
               }
             }
           }
@@ -146,15 +146,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9799e38bfa70bb2c",
+  "active": "a974480a9d532685",
   "lastOpenFiles": [
-    "research/software-and-data-integrity-failures.mdx",
-    "research/running-a-container-as-root-is-it-safe.mdx",
     "research/home-server-security.mdx",
     "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
+    "indonesia-abroad/kurshtop-surabaya.mdx",
+    "research/software-and-data-integrity-failures.mdx",
+    "research/running-a-container-as-root-is-it-safe.mdx",
     "research/the-wkcr-hijacking-incident.mdx",
     "indonesia-abroad/indonesia-abroad-mojokerto.mdx",
-    "indonesia-abroad/kurshtop-surabaya.mdx",
     "photography/the-world-in-black-and-white.mdx",
     "research",
     "static/images/blog/photography/car/jpg.md",
