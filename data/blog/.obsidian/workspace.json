@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "indonesia-abroad/Malaysia.mdx",
+                "file": "indonesia-abroad/indonesia-abroad-karimunjawa.mdx",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Malaysia"
+              "title": "indonesia-abroad-karimunjawa"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 290
   },
   "right": {
     "id": "02561c2ca28998cc",
@@ -142,8 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx"
-              }
+                "file": "indonesia-abroad/indonesia-abroad-karimunjawa.mdx",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of indonesia-abroad-karimunjawa"
             }
           }
         ]
@@ -166,18 +171,17 @@
   },
   "active": "9799e38bfa70bb2c",
   "lastOpenFiles": [
+    "indonesia-abroad/Malaysia.mdx",
+    "indonesia-abroad/indonesia-abroad-karimunjawa.mdx",
+    "().md",
     "indonesia-abroad/indonesia-abroad-kawah-ijen.mdx",
     "indonesia-abroad/indonesia-abroad-makanan.mdx",
     "research/home-server-security.mdx",
     "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
     "indonesia-abroad/kurshtop-surabaya.mdx",
-    "indonesia-abroad/Malaysia.mdx",
     "research/home-server-security.mdx",
     "indonesia-abroad/indonesia-abroad-a-short-trip-to-yogya.mdx",
     "research/software-and-data-integrity-failures.mdx",
-    "research/running-a-container-as-root-is-it-safe.mdx",
-    "research/the-wkcr-hijacking-incident.mdx",
-    "indonesia-abroad/indonesia-abroad-mojokerto.mdx",
     "static/images/blog/photography/car/jpg.md",
     "the-world-in-black-and-white.md",
     "kirby-nightmare-dreamland.jpg",
